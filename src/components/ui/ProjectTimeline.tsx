@@ -8,21 +8,21 @@ import type { ProjectData } from './ProjectCarousel3D';
 const BASE_URL = import.meta.env.BASE_URL;
 
 const rightStackImages = [
-  `${BASE_URL}xhs-right-1.jpg`,
-  `${BASE_URL}xhs-right-2.jpg`,
-  `${BASE_URL}xhs-right-3.jpg`,
-  `${BASE_URL}xhs-right-4.jpg`,
-  `${BASE_URL}xhs-right-5.jpg`
+  `${BASE_URL}xhs-right-1.webp`,
+  `${BASE_URL}xhs-right-2.webp`,
+  `${BASE_URL}xhs-right-3.webp`,
+  `${BASE_URL}xhs-right-4.webp`,
+  `${BASE_URL}xhs-right-5.webp`
 ];
 
 const leftStackImages = [
-  `${BASE_URL}xhs-1.jpg`,
-  `${BASE_URL}xhs-2.jpg`,
-  `${BASE_URL}xhs-3.jpg`,
-  `${BASE_URL}xhs-4.jpg`,
-  `${BASE_URL}xhs-5.jpg`,
-  `${BASE_URL}xhs-6.jpg`,
-  `${BASE_URL}xhs-7.jpg`
+  `${BASE_URL}xhs-1.webp`,
+  `${BASE_URL}xhs-2.webp`,
+  `${BASE_URL}xhs-3.webp`,
+  `${BASE_URL}xhs-4.webp`,
+  `${BASE_URL}xhs-5.webp`,
+  `${BASE_URL}xhs-6.webp`,
+  `${BASE_URL}xhs-7.webp`
 ];
 
 const projects: ProjectData[] = [
@@ -38,7 +38,7 @@ const projects: ProjectData[] = [
       "合同模拟器：客户画像逐月预测、条款推演，生成签约建议及完整利润报告。",
       "价值体现：分析模块将客户异常分析效率提升，建议采纳率达标；经营大盘让决策层分钟内掌握整体状态。"
     ],
-    image: `${BASE_URL}idc-power-report.png`
+    image: `${BASE_URL}idc-power-report.webp`
   },
   {
     title: "深度学习教学助手",
@@ -52,7 +52,7 @@ const projects: ProjectData[] = [
       "对话式交互大幅提升学习效率，学生问题解决时间从平均 30 分钟缩短至 5 分钟。",
       "全连接网络搭建等场景验证了有效性。"
     ],
-    image: `${BASE_URL}dl-assistant.png`
+    image: `${BASE_URL}dl-assistant.webp`
   },
   {
     title: "工业零件成本核算系统",
@@ -66,7 +66,7 @@ const projects: ProjectData[] = [
       "在原型阶段即实现了搜索、联动筛选、分页排序等高频交互细节。",
       "配置 API 接口，设计图形化费用占比分析看板（饼图、柱状图），强化方案说服力。"
     ],
-    image: `${BASE_URL}bom-cost.png`
+    image: `${BASE_URL}bom-cost.webp`
   },
   {
     title: "文献极速分析器工作流",
@@ -79,7 +79,7 @@ const projects: ProjectData[] = [
       "自动生成结构化总结并输出报告。",
       "极大缩减阅读和梳理文献的时间成本。"
     ],
-    image: `${BASE_URL}doc-analysis-workflow.png`
+    image: `${BASE_URL}doc-analysis-workflow.webp`
   },
   {
     title: "天气助手自动化工作流",
@@ -92,7 +92,7 @@ const projects: ProjectData[] = [
       "利用飞书机器人 Webhook 推送定制化消息。",
       "展现优秀的 API 接口调用与自动化编排逻辑设计能力。"
     ],
-    image: `${BASE_URL}n8n-workflow.png`
+    image: `${BASE_URL}n8n-workflow.webp`
   }
 ];
 
@@ -135,9 +135,9 @@ export function ProjectTimeline() {
               <div className="max-w-4xl mx-auto bg-secondary p-6 md:p-8 rounded-3xl shadow-soft border border-black/5 flex flex-col md:flex-row items-center gap-8 group hover:shadow-lg transition-all duration-300 relative z-40">
                 <div className="w-full md:w-1/2 flex flex-col gap-6">
                   <div className="w-full overflow-hidden rounded-2xl border border-black/5 shadow-sm relative group/img">
-                    <img src={`${BASE_URL}xiaohongshu-cover.png`} alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700" />
+                    <img src={`${BASE_URL}xiaohongshu-cover.webp`} alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700" />
                     <div 
-                      onClick={() => openLightbox(`${BASE_URL}xiaohongshu-cover.png`)}
+                      onClick={() => openLightbox(`${BASE_URL}xiaohongshu-cover.webp`)}
                       className="absolute top-3 right-3 bg-white/80 backdrop-blur-md p-2 rounded-full border border-black/5 text-foreground/70 opacity-0 group-hover/img:opacity-100 hover:bg-white transition-all cursor-pointer shadow-lg z-10"
                     >
                       <ZoomIn className="w-4 h-4" />
