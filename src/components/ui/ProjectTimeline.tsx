@@ -134,13 +134,13 @@ export function ProjectTimeline() {
               {/* 小红书卡片 */}
               <div className="max-w-4xl mx-auto bg-secondary p-6 md:p-8 rounded-3xl shadow-soft border border-black/5 flex flex-col md:flex-row items-center gap-8 group hover:shadow-lg transition-all duration-300 relative z-40">
                 <div className="w-full md:w-1/2 flex flex-col gap-6">
-                  <div className="w-full overflow-hidden rounded-2xl border border-black/5 shadow-sm relative group/img">
-                    <img src={`${BASE_URL}xiaohongshu-cover.webp`} alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700" />
-                    <div 
-                      onClick={() => openLightbox(`${BASE_URL}xiaohongshu-cover.webp`)}
-                      className="absolute top-3 right-3 bg-white/80 backdrop-blur-md p-2 rounded-full border border-black/5 text-foreground/70 opacity-0 group-hover/img:opacity-100 hover:bg-white transition-all cursor-pointer shadow-lg z-10"
-                    >
-                      <ZoomIn className="w-4 h-4" />
+                  <div 
+                    onClick={() => openLightbox(`${BASE_URL}xiaohongshu-cover.webp`)}
+                    className="w-full overflow-hidden rounded-2xl border border-black/5 shadow-sm relative group/img cursor-pointer"
+                  >
+                    <img src={`${BASE_URL}xiaohongshu-cover.webp`} alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700 pointer-events-none" />
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-full border border-black/5 text-foreground/80 opacity-100 md:opacity-0 group-hover/img:opacity-100 hover:bg-white transition-all shadow-lg z-10">
+                      <ZoomIn className="w-5 h-5 md:w-4 md:h-4" />
                     </div>
                   </div>
                   

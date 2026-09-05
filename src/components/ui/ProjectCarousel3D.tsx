@@ -35,7 +35,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
   
   // 设置空间位置：移除了会破坏鼠标事件的 z 轴 translate，改用 zIndex 和 scale 来完美模拟 3D 且保证鼠标悬停 100% 灵敏
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const x = offset * (isMobile ? 85 : 65) + "%";
+  const x = offset * (isMobile ? 75 : 65) + "%";
   const rotateY = offset * -25;
   const scale = isActive ? 1 : 0.85;
   const opacity = isActive ? 1 : (isMobile ? 0.8 : 0.4);
@@ -43,7 +43,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
 
   return (
     <motion.div
-      className="absolute top-0 left-0 right-0 bottom-0 mx-auto w-[85vw] max-w-[600px] md:max-w-[760px] h-[380px] md:h-[480px] cursor-pointer"
+      className="absolute top-0 left-0 right-0 bottom-0 mx-auto w-[70vw] md:w-full max-w-[600px] md:max-w-[760px] h-[380px] md:h-[480px] cursor-pointer"
       initial={false}
       animate={{ 
         x, 
