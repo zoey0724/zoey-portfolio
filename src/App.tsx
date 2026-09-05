@@ -24,30 +24,32 @@ function App() {
   const isScrollingRef = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (isScrollingRef.current) return;
-      const ids = sidebarItems.map(item => item.id);
-      let current = ids[0];
-      const threshold = window.innerHeight * 0.4; // 触发阈值：视口顶部往下 40%
-
-      // 从下往上遍历，找到第一个进入视口的区块，避免超大区块底部和下一个区块顶部干扰
-      for (let i = ids.length - 1; i >= 0; i--) {
-        const id = ids[i];
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= threshold) {
-            current = id;
-            break;
-          }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isScrollingRef.current) return;
+        
+        // 找到所有与视口交叉的元素
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        if (visibleEntries.length > 0) {
+          // 如果有多个元素可见，取最后（最靠下）的一个，更符合向下滚动时的直觉
+          const currentId = visibleEntries[visibleEntries.length - 1].target.id;
+          setActiveSection(currentId);
         }
+      },
+      {
+        root: null,
+        rootMargin: "-40% 0px -40% 0px", // 当元素进入屏幕中间区域时触发
+        threshold: 0
       }
-      setActiveSection(current);
-    };
-  
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // init
-    return () => window.removeEventListener('scroll', handleScroll);
+    );
+
+    const ids = sidebarItems.map(item => item.id);
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const handleSidebarClick = (id: string) => {
