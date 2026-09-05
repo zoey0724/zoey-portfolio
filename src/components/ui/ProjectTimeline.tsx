@@ -147,7 +147,7 @@ export function ProjectTimeline() {
                   {/* 下方的双堆叠展示区 */}
                   <div className="flex flex-row justify-center items-center gap-8 w-full mt-2">
                     {/* 左侧堆叠 */}
-                    <div style={{ width: 150, height: 150 }} className="relative z-10 flex-shrink-0">
+                    <div className="relative z-10 flex-shrink-0 w-32 h-32 sm:w-36 sm:h-36 md:w-[150px] md:h-[150px]">
                       <Stack
                         randomRotation={true}
                         sensitivity={180}
@@ -164,7 +164,7 @@ export function ProjectTimeline() {
                       />
                     </div>
                     {/* 右侧堆叠 */}
-                    <div style={{ width: 150, height: 150 }} className="relative z-10 flex-shrink-0">
+                    <div className="relative z-10 flex-shrink-0 w-32 h-32 sm:w-36 sm:h-36 md:w-[150px] md:h-[150px]">
                       <Stack
                         randomRotation={true}
                         sensitivity={180}
