@@ -28,19 +28,14 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
         </FadeIn>
       </div>
 
-      {/* 左下角：毛玻璃简介卡片 */}
-      <div className="relative mt-8 md:mt-0 md:absolute md:bottom-16 md:left-24 lg:left-32 z-10 w-full md:max-w-xl">
+      {/* 现代极简风格副标题 */}
+      <div className="relative mt-6 md:mt-0 md:absolute md:top-[65%] md:left-24 lg:left-32 z-10 w-full md:w-auto">
         <FadeIn delay={0.4} direction="up" viewportMargin="0px">
-          <div className="backdrop-blur-xl bg-white/70 border border-black/5 p-5 md:p-8 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:bg-white/90 hover:shadow-2xl group/card">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary transform scale-y-0 group-hover/card:scale-y-100 transition-transform origin-bottom duration-500"></div>
-            
-            <h2 className="text-lg md:text-2xl font-bold text-foreground mb-3 md:mb-4 leading-relaxed">
-              专注产品需求分析，深耕 B 端产品实践。
+          <div className="inline-flex items-center gap-3 backdrop-blur-md bg-white/60 border border-black/5 px-6 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
+            <h2 className="text-sm md:text-lg font-bold text-foreground/80 tracking-wide m-0">
+              专注产品需求分析，深耕 B 端产品实践
             </h2>
-            <p className="text-sm md:text-base text-muted leading-relaxed font-medium">
-              善于从业务场景出发，将复杂问题转化为清晰的产品方案。曾在广州尚航信息科技主导运营数据可视化与业财一体化系统 PRD 交付，具备扎实的数据分析与产品架构能力。
-            </p>
           </div>
         </FadeIn>
       </div>
