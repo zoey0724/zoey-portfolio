@@ -12,7 +12,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
       <div className="absolute top-32 md:top-48 left-6 md:left-24 lg:left-32 z-10 w-[calc(100%-3rem)] md:w-auto">
         <FadeIn delay={0.2} direction="down" viewportMargin="0px">
           {/* 加入 pb-6 避免 bg-clip-text 裁切字母 y 的尾巴 */}
-          <h1 className="text-[3.5rem] leading-[1.1] sm:text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-foreground pb-6">
+          <h1 className="text-5xl leading-[1.2] sm:text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-foreground pb-6 whitespace-nowrap md:whitespace-normal">
             <BilingualTextSwap 
               text1={[
                 { char: '你' }, { char: '好' }, { char: '，' }, { char: '我' }, { char: '是' }, { char: ' ' },
@@ -29,7 +29,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
       </div>
 
       {/* 左下角：毛玻璃简介卡片 */}
-      <div className="absolute bottom-40 sm:bottom-32 md:bottom-16 left-6 md:left-24 lg:left-32 z-10 max-w-[calc(100%-3rem)] md:max-w-xl">
+      <div className="absolute top-[42%] md:top-auto md:bottom-16 left-6 md:left-24 lg:left-32 z-10 max-w-[calc(100%-3rem)] md:max-w-xl">
         <FadeIn delay={0.4} direction="up" viewportMargin="0px">
           <div className="backdrop-blur-xl bg-white/70 border border-black/5 p-5 md:p-8 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:bg-white/90 hover:shadow-2xl group/card">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"></div>

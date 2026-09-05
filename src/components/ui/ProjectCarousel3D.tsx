@@ -25,6 +25,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
   isFlipped: boolean,
   onFlip: () => void,
   onHover: () => void,
+  onSwipe: (dir: 'left' | 'right') => void,
   onZoom: (image: string) => void
 }) {
   const isActive = index === activeIndex;
@@ -33,15 +34,16 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
   const offset = index - activeIndex;
   
   // 设置空间位置：移除了会破坏鼠标事件的 z 轴 translate，改用 zIndex 和 scale 来完美模拟 3D 且保证鼠标悬停 100% 灵敏
-  const x = offset * 65 + "%";
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const x = offset * (isMobile ? 85 : 65) + "%";
   const rotateY = offset * -25;
   const scale = isActive ? 1 : 0.85;
-  const opacity = isActive ? 1 : 0.4;
+  const opacity = isActive ? 1 : (isMobile ? 0.8 : 0.4);
   const zIndex = isActive ? 50 : 10;
 
   return (
     <motion.div
-      className="absolute top-0 left-0 right-0 bottom-0 mx-auto w-full max-w-[600px] md:max-w-[760px] h-[380px] md:h-[480px] cursor-pointer"
+      className="absolute top-0 left-0 right-0 bottom-0 mx-auto w-[85vw] max-w-[600px] md:max-w-[760px] h-[380px] md:h-[480px] cursor-pointer"
       initial={false}
       animate={{ 
         x, 
@@ -57,8 +59,17 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
       }}
       style={{ transformStyle: "preserve-3d" }}
       onClick={() => isActive && onFlip()}
-      // 核心修复：只有当鼠标真正滑入未激活的卡片时才切换
       onMouseEnter={() => !isActive && onHover()}
+      drag={isActive ? "x" : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.1}
+      onDragEnd={(e, { offset }) => {
+        if (offset.x < -40) {
+          onSwipe('left');
+        } else if (offset.x > 40) {
+          onSwipe('right');
+        }
+      }}
     >
       {/* 正面 (Front) - 高级 Mac 浏览器视窗包装 */}
       <motion.div 
@@ -199,6 +210,13 @@ export function ProjectCarousel3D({ projects }: ProjectCarousel3DProps) {
             isFlipped={flippedIndex === idx}
             onFlip={() => handleFlip(idx)}
             onHover={() => handleHover(idx)}
+            onSwipe={(dir) => {
+              if (dir === 'left' && activeIndex < projects.length - 1) {
+                handleHover(activeIndex + 1);
+              } else if (dir === 'right' && activeIndex > 0) {
+                handleHover(activeIndex - 1);
+              }
+            }}
             onZoom={(img) => openLightbox(img)}
           />
         ))}
