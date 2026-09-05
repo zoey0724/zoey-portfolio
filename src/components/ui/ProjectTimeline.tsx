@@ -38,7 +38,7 @@ const projects: ProjectData[] = [
       "合同模拟器：客户画像逐月预测、条款推演，生成签约建议及完整利润报告。",
       "价值体现：分析模块将客户异常分析效率提升，建议采纳率达标；经营大盘让决策层分钟内掌握整体状态。"
     ],
-    image: `${BASE_URL}idc-power-report.webp`
+    image: `${BASE_URL}idc-power-report.png`
   },
   {
     title: "深度学习教学助手",
@@ -52,7 +52,7 @@ const projects: ProjectData[] = [
       "对话式交互大幅提升学习效率，学生问题解决时间从平均 30 分钟缩短至 5 分钟。",
       "全连接网络搭建等场景验证了有效性。"
     ],
-    image: `${BASE_URL}dl-assistant.webp`
+    image: `${BASE_URL}dl-assistant.png`
   },
   {
     title: "工业零件成本核算系统",
@@ -66,7 +66,7 @@ const projects: ProjectData[] = [
       "在原型阶段即实现了搜索、联动筛选、分页排序等高频交互细节。",
       "配置 API 接口，设计图形化费用占比分析看板（饼图、柱状图），强化方案说服力。"
     ],
-    image: `${BASE_URL}bom-cost.webp`
+    image: `${BASE_URL}bom-cost.png`
   },
   {
     title: "文献极速分析器工作流",
@@ -79,7 +79,7 @@ const projects: ProjectData[] = [
       "自动生成结构化总结并输出报告。",
       "极大缩减阅读和梳理文献的时间成本。"
     ],
-    image: `${BASE_URL}doc-analysis-workflow.webp`
+    image: `${BASE_URL}doc-analysis-workflow.png`
   },
   {
     title: "天气助手自动化工作流",
@@ -92,7 +92,7 @@ const projects: ProjectData[] = [
       "利用飞书机器人 Webhook 推送定制化消息。",
       "展现优秀的 API 接口调用与自动化编排逻辑设计能力。"
     ],
-    image: `${BASE_URL}n8n-workflow.webp`
+    image: `${BASE_URL}n8n-workflow.png`
   }
 ];
 
