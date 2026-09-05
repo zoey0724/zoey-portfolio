@@ -58,14 +58,18 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
         mass: 1.5         // 增加质量，让卡片移动更有厚重的高级感
       }}
       style={{ transformStyle: "preserve-3d" }}
-      onClick={() => {
+      onTap={() => {
         if (isActive) {
           onFlip();
         } else {
           onHover();
         }
       }}
-      onMouseEnter={() => !isActive && onHover()}
+      onHoverStart={(e) => {
+        if (e.pointerType === "mouse" && !isActive) {
+          onHover();
+        }
+      }}
       drag={isActive ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.1}
