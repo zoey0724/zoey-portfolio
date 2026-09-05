@@ -47,17 +47,15 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
       initial={false}
       animate={{ 
         x, 
-        rotateY: rotateY + (isFlipped ? 180 : 0), 
         scale, 
         zIndex
       }}
       transition={{ 
         type: "spring", 
-        stiffness: 70,    // 降低硬度，让动画变得缓慢
-        damping: 20,      // 调整阻尼，防止过度回弹
-        mass: 1.5         // 增加质量，让卡片移动更有厚重的高级感
+        stiffness: 70,
+        damping: 20,
+        mass: 1.5
       }}
-      style={{ transformStyle: "preserve-3d" }}
       onTap={() => {
         if (isActive) {
           onFlip();
@@ -81,6 +79,19 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
         }
       }}
     >
+      <motion.div
+        className="relative w-full h-full"
+        animate={{ rotateY: rotateY + (isFlipped ? 180 : 0) }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 70,
+          damping: 20,
+          mass: 1.5
+        }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* 透明遮罩，拦截侧边卡片在 iOS 上可能的事件吞噬 */}
+        {!isActive && <div className="absolute inset-0 z-50 bg-transparent" />}
       {/* 正面 (Front) - 高级 Mac 浏览器视窗包装 */}
       <motion.div 
         animate={{ opacity }}
@@ -184,6 +195,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
             再次点击返回
           </div>
         </div>
+      </motion.div>
       </motion.div>
     </motion.div>
   );
