@@ -7,7 +7,7 @@ import { LightboxProvider } from './components/ui/LightboxProvider';
 import { ContactBadge } from './components/ui/ContactBadge';
 import { LineSidebar } from './components/ui/LineSidebar';
 import type { SidebarItem } from './components/ui/LineSidebar';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 const sidebarItems: SidebarItem[] = [
   { id: 'hero', label: '首页简介', level: 0 },
@@ -74,29 +74,49 @@ function App() {
       }, 1000);
     }
   };
+  // 缓存极高耗能的 WebGL 和 3D 轮播图组件，防止 activeSection 改变时触发全局重绘导致滑动卡顿
+  const liquidEtherBackground = useMemo(() => (
+    <div className="fixed inset-0 w-full h-full z-0 opacity-30 mix-blend-multiply pointer-events-none">
+      <LiquidEther
+        colors={[ '#e2e8f0', '#f1f5f9', '#e0e7ff' ]}
+        mouseForce={5}
+        cursorSize={100}
+        isViscous={false}
+        viscous={30}
+        iterationsViscous={32}
+        iterationsPoisson={32}
+        resolution={0.5}
+        isBounce={false}
+        autoDemo={true}
+        autoSpeed={0.5}
+        autoIntensity={2.2}
+        takeoverDuration={0.25}
+        autoResumeDelay={3000}
+        autoRampDuration={0.6}
+      />
+    </div>
+  ), []);
+
+  const memoizedContent = useMemo(() => (
+    <main>
+      <div id="hero">
+        <HeroSection onContactClick={() => setIsContactOpen(true)} />
+      </div>
+      <ProjectTimeline />
+      <div id="internship">
+        <InternshipExperience />
+      </div>
+      <div id="skills">
+        <SkillBentoGrid />
+      </div>
+    </main>
+  ), []);
+
   return (
     <LightboxProvider>
       <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary relative">
       {/* 全局 3D 流体背景 */}
-      <div className="fixed inset-0 w-full h-full z-0 opacity-30 mix-blend-multiply pointer-events-none">
-        <LiquidEther
-          colors={[ '#e2e8f0', '#f1f5f9', '#e0e7ff' ]}
-          mouseForce={5}
-          cursorSize={100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-        />
-      </div>
+      {liquidEtherBackground}
 
       <div className="relative z-10">
       
@@ -121,18 +141,7 @@ function App() {
         </div>
       </nav>
 
-      <main>
-        <div id="hero">
-          <HeroSection onContactClick={() => setIsContactOpen(true)} />
-        </div>
-        <ProjectTimeline />
-        <div id="internship">
-          <InternshipExperience />
-        </div>
-        <div id="skills">
-          <SkillBentoGrid />
-        </div>
-      </main>
+      {memoizedContent}
 
       {/* 页脚 */}
       <footer className="py-12 bg-transparent border-t border-black/5 text-center text-muted text-sm">
