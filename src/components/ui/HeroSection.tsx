@@ -46,7 +46,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
       </div>
 
       {/* 底部：操作按钮 */}
-      <div className="absolute bottom-8 md:bottom-16 left-6 md:left-auto md:right-12 z-10 w-[calc(100%-3rem)] md:w-auto">
+      <div className="hidden md:block absolute bottom-8 md:bottom-16 left-6 md:left-auto md:right-12 z-10 w-[calc(100%-3rem)] md:w-auto">
         <FadeIn delay={0.6} direction="up" viewportMargin="0px">
           <div className="flex flex-row md:flex-row items-stretch md:items-center gap-3 w-full">
             <a 
