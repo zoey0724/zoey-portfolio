@@ -56,11 +56,9 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
         damping: 20,
         mass: 1.5
       }}
-      onTap={() => {
+      onClick={() => {
         if (isActive) {
           onFlip();
-        } else {
-          onHover();
         }
       }}
       onHoverStart={(e) => {
@@ -90,8 +88,23 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onS
         }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* 透明遮罩，拦截侧边卡片在 iOS 上可能的事件吞噬 */}
-        {!isActive && <div className="absolute inset-0 z-50 bg-transparent" />}
+        {/* 终极触摸捕获层：带有微弱背景色（iOS Safari 必需）的原生 div */}
+        {!isActive && (
+          <div 
+            className="absolute inset-0 z-50 cursor-pointer" 
+            style={{ backgroundColor: 'rgba(0,0,0,0.01)', touchAction: 'manipulation' }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onHover();
+            }}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onHover();
+            }}
+          />
+        )}
       {/* 正面 (Front) - 高级 Mac 浏览器视窗包装 */}
       <motion.div 
         animate={{ opacity }}
