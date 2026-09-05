@@ -21,7 +21,15 @@ const sidebarItems: SidebarItem[] = [
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isMobile, setIsMobile] = useState(false);
   const isScrollingRef = useRef(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,8 +125,8 @@ function App() {
   return (
     <LightboxProvider>
       <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary relative">
-      {/* 全局 3D 流体背景 */}
-      {liquidEtherBackground}
+      {/* 全局 3D 流体背景：移动端直接不渲染，省下 100% 的 GPU 性能，根治卡顿 */}
+      {!isMobile && liquidEtherBackground}
 
       <div className="relative z-10">
       

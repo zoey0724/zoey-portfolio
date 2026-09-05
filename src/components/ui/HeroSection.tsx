@@ -7,9 +7,9 @@ interface HeroSectionProps {
 
 export function HeroSection({ onContactClick }: HeroSectionProps) {
   return (
-    <section className="relative w-full h-screen overflow-hidden text-foreground">
+    <section className="relative w-full min-h-[85vh] md:h-screen overflow-hidden text-foreground flex flex-col justify-center px-6 md:block md:px-0 pb-20 md:pb-0 pt-24 md:pt-0">
       {/* 左上角：双语动画大标题 */}
-      <div className="absolute top-32 md:top-48 left-6 md:left-24 lg:left-32 z-10 w-[calc(100%-3rem)] md:w-auto">
+      <div className="relative md:absolute md:top-48 md:left-24 lg:left-32 z-10 w-full md:w-auto">
         <FadeIn delay={0.2} direction="down" viewportMargin="0px">
           {/* 加入 pb-6 避免 bg-clip-text 裁切字母 y 的尾巴 */}
           <h1 className="text-5xl leading-[1.2] sm:text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-foreground pb-6 whitespace-nowrap md:whitespace-normal">
@@ -29,7 +29,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
       </div>
 
       {/* 左下角：毛玻璃简介卡片 */}
-      <div className="absolute bottom-20 md:bottom-16 left-6 md:left-24 lg:left-32 z-10 max-w-[calc(100%-3rem)] md:max-w-xl">
+      <div className="relative mt-8 md:mt-0 md:absolute md:bottom-16 md:left-24 lg:left-32 z-10 w-full md:max-w-xl">
         <FadeIn delay={0.4} direction="up" viewportMargin="0px">
           <div className="backdrop-blur-xl bg-white/70 border border-black/5 p-5 md:p-8 rounded-2xl shadow-xl overflow-hidden transition-all duration-500 hover:bg-white/90 hover:shadow-2xl group/card">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
