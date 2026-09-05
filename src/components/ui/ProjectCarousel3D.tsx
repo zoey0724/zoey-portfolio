@@ -18,7 +18,7 @@ interface ProjectCarousel3DProps {
   projects: ProjectData[];
 }
 
-function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZoom }: { 
+function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onSwipe, onZoom }: { 
   project: ProjectData, 
   index: number, 
   activeIndex: number,
@@ -63,7 +63,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
       drag={isActive ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.1}
-      onDragEnd={(e, { offset }) => {
+      onDragEnd={(_, { offset }) => {
         if (offset.x < -40) {
           onSwipe('left');
         } else if (offset.x > 40) {
