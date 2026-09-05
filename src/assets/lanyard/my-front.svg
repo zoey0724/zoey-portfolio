@@ -17,8 +17,8 @@
   <text x="40" y="160" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="#18181b" letter-spacing="4">ZOEY</text>
   
   <!-- Subtitle -->
-  <text x="40" y="220" font-family="monospace" font-size="22" font-weight="bold" fill="#64748b" letter-spacing="2">AIGC CREATOR</text>
-  <text x="40" y="255" font-family="monospace" font-size="22" font-weight="bold" fill="#64748b" letter-spacing="2">&amp; AI BUILDER</text>
+  <text x="40" y="220" font-family="monospace" font-size="22" font-weight="bold" fill="#64748b" letter-spacing="2">PRODUCT MANAGER</text>
+  <text x="40" y="255" font-family="monospace" font-size="22" font-weight="bold" fill="#64748b" letter-spacing="2">&amp; CONTENT CREATOR</text>
 
   <!-- Glitch Blocks Left -->
   <rect x="40" y="320" width="30" height="6" fill="#18181b" />
