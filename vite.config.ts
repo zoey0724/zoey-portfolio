@@ -8,5 +8,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: '/zoey-portfolio/',
   assetsInclude: ['**/*.glb'],
 })

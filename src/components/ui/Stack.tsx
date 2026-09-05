@@ -38,7 +38,7 @@ export default function Stack({
   };
 
   const handleDragEnd = (_event: any, info: any) => {
-    if (Math.abs(info.offset.x) > sensitivity) {
+    if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
       moveToBack();
     }
   };
@@ -62,8 +62,8 @@ export default function Stack({
             <motion.div
               key={item.id}
               className={`absolute inset-0 origin-bottom rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-2 border-white bg-white ${isTop ? 'cursor-grab active:cursor-grabbing' : ''}`}
-              drag={isTop ? 'x' : false}
-              dragConstraints={{ left: 0, right: 0 }}
+              drag={isTop ? true : false}
+              dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
               dragElastic={1}
               onDragEnd={isTop ? handleDragEnd : undefined}
               onClick={isTop ? handleClick : undefined}

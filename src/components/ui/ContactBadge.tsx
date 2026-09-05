@@ -3,6 +3,11 @@ import { X } from 'lucide-react';
 import Lanyard from './Lanyard';
 import frontImage from '../../assets/lanyard/my-front.svg';
 import backImage from '../../assets/lanyard/my-back.svg';
+import { useTexture } from '@react-three/drei';
+
+// 预加载贴图
+useTexture.preload(frontImage);
+useTexture.preload(backImage);
 
 interface ContactBadgeProps {
   isOpen: boolean;

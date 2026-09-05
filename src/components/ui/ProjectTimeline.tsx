@@ -5,11 +5,22 @@ import { ZoomIn } from 'lucide-react';
 import Stack from './Stack';
 import type { ProjectData } from './ProjectCarousel3D';
 
-const placeholderImages = [
-  "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
-  "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
-  "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
+const rightStackImages = [
+  "/xhs-right-1.jpg",
+  "/xhs-right-2.jpg",
+  "/xhs-right-3.jpg",
+  "/xhs-right-4.jpg",
+  "/xhs-right-5.jpg"
+];
+
+const leftStackImages = [
+  "/xhs-1.jpg",
+  "/xhs-2.jpg",
+  "/xhs-3.jpg",
+  "/xhs-4.jpg",
+  "/xhs-5.jpg",
+  "/xhs-6.jpg",
+  "/xhs-7.jpg"
 ];
 
 const projects: ProjectData[] = [
@@ -120,46 +131,62 @@ export function ProjectTimeline() {
             </h3>
               {/* 小红书卡片 */}
               <div className="max-w-4xl mx-auto bg-secondary p-6 md:p-8 rounded-3xl shadow-soft border border-black/5 flex flex-col md:flex-row items-center gap-8 group hover:shadow-lg transition-all duration-300 relative z-40">
-                <div className="w-full md:w-1/2 overflow-hidden rounded-2xl border border-black/5 shadow-sm relative group/img">
-                  <img src="/xiaohongshu-cover.png" alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700" />
-                  <div 
-                    onClick={() => openLightbox("/xiaohongshu-cover.png")}
-                    className="absolute top-3 right-3 bg-white/80 backdrop-blur-md p-2 rounded-full border border-black/5 text-foreground/70 opacity-0 group-hover/img:opacity-100 hover:bg-white transition-all cursor-pointer shadow-lg z-10"
-                  >
-                    <ZoomIn className="w-4 h-4" />
+                <div className="w-full md:w-1/2 flex flex-col gap-6">
+                  <div className="w-full overflow-hidden rounded-2xl border border-black/5 shadow-sm relative group/img">
+                    <img src="/xiaohongshu-cover.png" alt="小红书运营" className="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-700" />
+                    <div 
+                      onClick={() => openLightbox("/xiaohongshu-cover.png")}
+                      className="absolute top-3 right-3 bg-white/80 backdrop-blur-md p-2 rounded-full border border-black/5 text-foreground/70 opacity-0 group-hover/img:opacity-100 hover:bg-white transition-all cursor-pointer shadow-lg z-10"
+                    >
+                      <ZoomIn className="w-4 h-4" />
+                    </div>
+                  </div>
+                  
+                  {/* 下方的双堆叠展示区 */}
+                  <div className="flex flex-row justify-center items-center gap-8 w-full mt-2">
+                    {/* 左侧堆叠 */}
+                    <div style={{ width: 150, height: 150 }} className="relative z-10 flex-shrink-0">
+                      <Stack
+                        randomRotation={true}
+                        sensitivity={180}
+                        sendToBackOnClick={true}
+                        cards={leftStackImages.map((src, i) => (
+                          <img 
+                            key={`left-${i}`} 
+                            src={src} 
+                            alt={`左侧展示-${i + 1}`} 
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+                            className="bg-muted rounded-xl shadow-sm border border-black/5"
+                          />
+                        ))}
+                      />
+                    </div>
+                    {/* 右侧堆叠 */}
+                    <div style={{ width: 150, height: 150 }} className="relative z-10 flex-shrink-0">
+                      <Stack
+                        randomRotation={true}
+                        sensitivity={180}
+                        sendToBackOnClick={true}
+                        cards={rightStackImages.map((src, i) => (
+                          <img 
+                            key={`right-${i}`} 
+                            src={src} 
+                            alt={`右侧展示-${i + 1}`} 
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+                            className="bg-muted rounded-xl shadow-sm border border-black/5"
+                          />
+                        ))}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
                     <h4 className="font-bold text-2xl text-primary">小红书时尚风格账号运营</h4>
                   </div>
-                  <p className="text-base text-foreground/80 leading-relaxed mb-8">
+                  <p className="text-base text-foreground/80 leading-relaxed">
                     基于个人穿搭探索用户审美偏好，建立穿搭分享矩阵。在实践中沉淀了深刻的用户审美洞察与平台流量运营经验，粉丝数显著增长。
                   </p>
-
-                  {/* 运营成果堆叠展示区（预留位） */}
-                  <div className="flex flex-col gap-4 mt-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-4 bg-primary rounded-full"></div>
-                      <span className="text-sm font-bold text-foreground/70 tracking-wider">运营成果概览 (滑动/点击查看)</span>
-                    </div>
-                    <div style={{ width: 208, height: 208 }} className="ml-2 relative z-10">
-                      <Stack
-                        randomRotation={true}
-                        sensitivity={180}
-                        sendToBackOnClick={true}
-                        cards={placeholderImages.map((src, i) => (
-                          <img 
-                            key={i} 
-                            src={src} 
-                            alt={`运营成果展示-${i + 1}`} 
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            className="bg-muted"
-                          />
-                        ))}
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
           </div>

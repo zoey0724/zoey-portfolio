@@ -20,6 +20,10 @@ import * as THREE from 'three';
 import cardGLB from '../../assets/lanyard/card.glb';
 import lanyard from '../../assets/lanyard/lanyard.png';
 
+// 预加载模型和主贴图，防止首次渲染卡顿
+useGLTF.preload(cardGLB as string);
+useTexture.preload(lanyard);
+
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 declare module '@react-three/fiber' {

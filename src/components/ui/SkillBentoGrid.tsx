@@ -13,7 +13,7 @@ export function SkillBentoGrid() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           
           {/* 教育背景 - 占据2列 */}
-          <FadeIn delay={0.1} className="md:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all group overflow-hidden relative z-40">
+          <FadeIn delay={0.1} viewportMargin="0px" className="md:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-shadow duration-300 group overflow-hidden relative z-40">
             <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-50 group-hover:bg-primary/20 transition-colors"></div>
             <GraduationCap className="w-12 h-12 text-primary mb-6 group-hover:-translate-y-1 transition-transform relative z-10" />
             <h3 className="text-2xl font-bold mb-2 text-primary relative z-10">教育背景</h3>
@@ -33,7 +33,7 @@ export function SkillBentoGrid() {
           </FadeIn>
 
           {/* AI与产品战略 - 占据2列 */}
-          <FadeIn delay={0.2} className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all group relative z-40">
+          <FadeIn delay={0.2} viewportMargin="0px" className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-shadow duration-300 group relative z-40">
             <BrainCircuit className="w-12 h-12 text-primary mb-6 group-hover:-translate-y-1 transition-transform" />
             <h3 className="text-xl font-bold mb-5 text-primary">AI 与产品工具</h3>
             <ul className="space-y-4">
@@ -53,7 +53,7 @@ export function SkillBentoGrid() {
           </FadeIn>
 
           {/* 数据与工程基础 - 占据2列 (在大屏下) */}
-          <FadeIn delay={0.3} className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all group relative z-40">
+          <FadeIn delay={0.1} viewportMargin="0px" className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-shadow duration-300 group relative z-40">
             <Database className="w-10 h-10 text-primary mb-6 group-hover:-translate-y-1 transition-transform" />
             <h3 className="text-lg font-bold mb-5 text-primary">数据与工程基础</h3>
             <div className="flex flex-wrap gap-3">
@@ -64,7 +64,7 @@ export function SkillBentoGrid() {
           </FadeIn>
 
           {/* 奖项 - 占据2列 */}
-          <FadeIn delay={0.4} className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 group relative z-40">
+          <FadeIn delay={0.2} viewportMargin="0px" className="md:col-span-2 lg:col-span-2 bg-secondary border border-black/5 rounded-[2rem] p-8 shadow-sm hover:shadow-xl hover:border-primary/20 transition-shadow duration-300 group relative z-40">
             <Trophy className="w-10 h-10 text-primary mb-6 group-hover:-translate-y-1 transition-transform" />
             <h3 className="text-xl font-bold mb-5 text-primary">所获奖项与经历</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

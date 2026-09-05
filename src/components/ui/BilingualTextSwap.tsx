@@ -83,7 +83,7 @@ export function BilingualTextSwap({ text1, text2, className }: BilingualTextSwap
           {text1.map((item, i) => (
             <motion.span 
               key={`t1-${i}`}
-              className={`letter-1 relative inline-block whitespace-pre pb-4 ${item.highlight ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" : ""}`}
+              className={`letter-1 relative inline-block whitespace-pre pb-4 pr-2 -mr-2 ${item.highlight ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" : ""}`}
               initial={{ y: "0%", opacity: 1 }}
             >
               {item.char}
@@ -94,7 +94,7 @@ export function BilingualTextSwap({ text1, text2, className }: BilingualTextSwap
           {text2.map((item, i) => (
             <motion.span 
               key={`t2-${i}`}
-              className={`letter-2 relative inline-block whitespace-pre pb-4 ${item.highlight ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" : ""}`}
+              className={`letter-2 relative inline-block whitespace-pre pb-4 pr-2 -mr-2 ${item.highlight ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" : ""}`}
               initial={{ y: "100%", opacity: 0 }}
             >
               {item.char}

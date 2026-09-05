@@ -47,7 +47,6 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
         x, 
         rotateY: rotateY + (isFlipped ? 180 : 0), 
         scale, 
-        opacity,
         zIndex
       }}
       transition={{ 
@@ -62,12 +61,19 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
       onMouseEnter={() => !isActive && onHover()}
     >
       {/* 正面 (Front) - 高级 Mac 浏览器视窗包装 */}
-      <div 
+      <motion.div 
+        animate={{ opacity }}
+        transition={{ duration: 0.3 }}
         className={cn(
           "absolute inset-0 w-full h-full rounded-[2rem] overflow-hidden shadow-2xl border border-black/5 bg-secondary flex flex-col",
           isFlipped ? "pointer-events-none" : ""
         )}
-        style={{ backfaceVisibility: "hidden" }}
+        style={{ 
+          backfaceVisibility: "hidden", 
+          WebkitBackfaceVisibility: "hidden",
+          transform: "rotateY(0deg) translateZ(1px)",
+          willChange: "transform"
+        }}
       >
         {/* Mac 风格顶部导航条 */}
         <div className="h-10 w-full bg-white/80 border-b border-black/5 flex items-center px-4 space-x-2 shrink-0 z-20 shadow-sm relative">
@@ -119,15 +125,22 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
             <ZoomIn className="w-5 h-5" />
           </motion.div>
         )}
-      </div>
+      </motion.div>
 
       {/* 背面 (Back) - 清爽的详情展示 */}
-      <div 
+      <motion.div 
+        animate={{ opacity }}
+        transition={{ duration: 0.3 }}
         className={cn(
           "absolute inset-0 w-full h-full rounded-[2rem] bg-secondary shadow-2xl border border-black/5 p-8 overflow-y-auto flex flex-col",
           !isFlipped ? "pointer-events-none" : ""
         )}
-        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        style={{ 
+          backfaceVisibility: "hidden", 
+          WebkitBackfaceVisibility: "hidden", 
+          transform: "rotateY(180deg) translateZ(1px)",
+          willChange: "transform"
+        }}
       >
         <div className="h-full flex flex-col">
           <h3 className="text-2xl font-bold text-primary mb-4">{project.title}</h3>
@@ -150,7 +163,7 @@ function FlipCard({ project, index, activeIndex, isFlipped, onFlip, onHover, onZ
             再次点击返回
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
