@@ -32,6 +32,9 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // 移动端既然不显示侧边栏，就彻底关闭滚动监听，防止任何无意义的 state 更新打断滚动惯性
+    if (isMobile) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (isScrollingRef.current) return;
@@ -58,7 +61,7 @@ function App() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   const handleSidebarClick = (id: string) => {
     const el = document.getElementById(id);
