@@ -203,7 +203,7 @@ export function ProjectCarousel3D({ projects }: ProjectCarousel3DProps) {
 
   return (
     <div 
-      className="w-full relative py-20 overflow-hidden" 
+      className="relative py-20 overflow-hidden -mx-6 w-[calc(100%+3rem)] md:mx-auto md:w-full" 
       style={{ perspective: "2000px" }} 
     >
       <div className="relative w-full max-w-7xl mx-auto h-[380px] md:h-[480px] flex justify-center items-center transform-gpu" style={{ transformStyle: "preserve-3d" }}>
