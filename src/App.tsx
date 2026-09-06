@@ -113,7 +113,7 @@ function App() {
   const memoizedContent = useMemo(() => (
     <main>
       <div id="hero">
-        <HeroSection onContactClick={() => setIsContactOpen(true)} />
+        <HeroSection />
       </div>
       <ProjectTimeline />
       <div id="internship">
