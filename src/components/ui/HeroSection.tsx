@@ -1,5 +1,6 @@
 import { FadeIn } from './FadeIn';
 import { BilingualTextSwap } from './BilingualTextSwap';
+import SpecularButton from './SpecularButton';
 
 interface HeroSectionProps {}
 
@@ -33,14 +34,35 @@ export function HeroSection({}: HeroSectionProps = {}) {
           </h1>
         </FadeIn>
 
-        {/* 现代极简风格副标题 */}
+        {/* 现代极简风格副标题 (光束跟踪高亮效果) */}
         <FadeIn delay={0.4} direction="up" viewportMargin="0px">
-          <div className="inline-flex items-center gap-3 backdrop-blur-md bg-white/60 border border-black/5 px-8 py-4 rounded-full shadow-sm hover:shadow-md transition-all mt-4 md:mt-8 relative overflow-hidden group/pill">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/pill:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-            <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
-            <h2 className="text-sm md:text-xl font-bold text-foreground/80 tracking-widest m-0">
-              专注产品需求分析，深耕 B 端产品实践
-            </h2>
+          <div className="mt-4 md:mt-8 relative group">
+            <SpecularButton
+              size="lg"
+              radius={9999}
+              tint="#ffffff"
+              tintOpacity={0}
+              blur={0}
+              textColor="inherit"
+              lineColor="#4f46e5" // Primary color shine
+              baseColor="rgba(255, 255, 255, 0.7)" // Glassmorphism base
+              intensity={1}
+              shineSize={10}
+              shineFade={40}
+              thickness={1.5}
+              speed={0.35}
+              followMouse
+              proximity={250}
+              autoAnimate={false}
+              className="backdrop-blur-md shadow-sm hover:shadow-md transition-shadow font-sans"
+            >
+              <div className="flex items-center gap-3 px-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
+                <h2 className="text-sm md:text-xl font-bold text-foreground/80 tracking-widest m-0">
+                  专注产品需求分析，深耕 B 端产品实践
+                </h2>
+              </div>
+            </SpecularButton>
           </div>
         </FadeIn>
         
