@@ -35,7 +35,7 @@ export function HeroSection({}: HeroSectionProps = {}) {
 
         {/* 现代极简风格副标题 */}
         <FadeIn delay={0.4} direction="up" viewportMargin="0px">
-          <div className="inline-flex items-center gap-4 backdrop-blur-md bg-white/60 border border-black/5 px-10 py-5 md:px-12 md:py-6 rounded-full shadow-sm hover:shadow-md transition-all mt-4 md:mt-10 relative overflow-hidden group/pill">
+          <div className="inline-flex items-center gap-4 backdrop-blur-md bg-white/60 border border-black/5 px-10 py-5 md:px-12 md:py-6 rounded-full shadow-sm hover:shadow-md transition-all mt-8 md:mt-20 relative overflow-hidden group/pill">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/pill:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             <span className="w-3 h-3 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
             <h2 className="text-base md:text-2xl font-bold text-foreground/80 tracking-widest m-0">
